@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\caption{Per-patient diagnostics summary for the proximal G-estimator ($n=50$ patients). F-statistic and relevance weight characterize proxy strength. Patients with $F > 10$ (Stock \& Yogo threshold) receive near-full control function correction; others are regularized toward naive OLS.}
+\label{tab:diagnostics}
+\begin{tabular}{llrrrrr}
+\toprule
+Proxy & Diagnostic & Min & Q25 & Median & Q75 & Max \\
+\midrule
+Strong & F-statistic & 0.4 & 3.7 & 6.4 & 11.1 & 31.9 \\
+Strong & $R^2$ (Stage 1) & 0.003 & 0.025 & 0.043 & 0.072 & 0.183 \\
+Strong & Relevance weight & 0.04 & 0.31 & 0.47 & 0.67 & 0.96 \\
+Strong & $\hat{\tau}_{\mathrm{CF}}$ & -15.2 & -6.2 & -3.5 & -2.7 & -1.6 \\
+Strong & $\hat{\tau}_{\mathrm{final}}$ & -20.3 & -8.6 & -5.4 & -3.9 & -2.1 \\
+\midrule
+Weak & F-statistic & 0.0 & 0.6 & 1.1 & 1.9 & 4.2 \\
+Weak & $R^2$ (Stage 1) & 0.000 & 0.004 & 0.007 & 0.013 & 0.028 \\
+Weak & Relevance weight & 0.00 & 0.05 & 0.10 & 0.17 & 0.34 \\
+Weak & $\hat{\tau}_{\mathrm{CF}}$ & -15.2 & -6.2 & -3.4 & -2.8 & -1.6 \\
+Weak & $\hat{\tau}_{\mathrm{final}}$ & -27.8 & -11.9 & -6.7 & -5.1 & -3.0 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,34 @@
+# AEGIS Proxy Variable Manifest
+# Documents the causal assumptions behind each proxy variable.
+# Any proxy with validation_status: unverified must not be silently treated as valid.
+
+proxies:
+  - name: z_proxy
+    proxy_type: treatment_confounder
+    description: >
+      Treatment-confounder proxy derived from work-stressor and stress concepts.
+      Indicates psychological stress state that influences treatment decisions.
+    assumed_confounder: U (unmeasured psychological stress)
+    independence_assumptions:
+      - "Z ⊥ Y | U, S  (work stress does not directly affect glucose, only via U)"
+      - "Z ⊥̸ U | S     (work stress correlates with overall stress)"
+    source_concepts: [work_stressor, stress]
+    validation_status: structural
+    validation_notes: >
+      Independence guaranteed by the data generating process in
+      simulator/patient.py: Z is generated from U only, not from Y.
+
+  - name: w_proxy
+    proxy_type: outcome_confounder
+    description: >
+      Outcome-confounder proxy derived from fatigue and sleep quality concepts.
+      Indicates physiological state affected by stress but not by treatment.
+    assumed_confounder: U (unmeasured psychological stress)
+    independence_assumptions:
+      - "W ⊥ A | U, S  (fatigue/sleep not caused by insulin treatment)"
+      - "W ⊥̸ U | S     (fatigue correlates with unmeasured stress)"
+    source_concepts: [fatigue, sleep_quality]
+    validation_status: structural
+    validation_notes: >
+      Independence guaranteed by the data generating process in
+      simulator/patient.py: W is generated as 0.5*U + noise, not from A.

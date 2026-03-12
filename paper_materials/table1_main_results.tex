@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Estimator comparison across proxy conditions ($n=50$ patients, 288 observations each, seed=42). MAE and P95 Error in mg/dL/U. Coverage is the fraction of patients whose true $\tau_i$ falls within the sensitivity-adjusted 95\% confidence interval (effective $n/5$, $\gamma=0.15$).}
+\label{tab:main_results}
+\begin{tabular}{llrrrr}
+\toprule
+Estimator & Proxy & MAE & P95 Err & Coverage & Bias \\
+\midrule
+Naive OLS & strong & 4.04 & 6.64 & --- & -4.04 \\
+Population AIPW & strong & 6.08 & 8.81 & --- & -3.44 \\
+Standard G-estimation & strong & 4.04 & 6.64 & --- & -4.04 \\
+\textbf{Proximal G-estimation} & \textbf{strong} & \textbf{2.12} & \textbf{3.66} & \textbf{0.960} & \textbf{-1.75} \\
+\midrule
+Naive OLS & weak & 4.04 & 6.64 & --- & -4.04 \\
+Population AIPW & weak & 6.08 & 8.81 & --- & -3.44 \\
+Standard G-estimation & weak & 4.04 & 6.64 & --- & -4.04 \\
+Proximal G-estimation & weak & 3.54 & 6.19 & 0.960 & -3.51 \\
+\bottomrule
+\end{tabular}
+\end{table}

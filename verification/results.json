@@ -1,0 +1,797 @@
+{
+  "Layer 1: Semantic Sensorium": [
+    {
+      "test_id": "R-L1-01",
+      "name": "Concept Extraction (Nominal)",
+      "type": "nominal",
+      "metrics": {
+        "precision": 0.8125,
+        "recall": 0.9285714285714286,
+        "f1": 0.8666666666666666
+      },
+      "threshold": {
+        "f1_min": 0.8
+      },
+      "passed": true,
+      "suite_name": "Layer 1: Semantic Sensorium",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L1-02",
+      "name": "Semantic Entropy Calibration",
+      "type": "nominal",
+      "metrics": {
+        "mean_ambiguous_entropy": 0.441962606820608,
+        "mean_clear_entropy": 0.407242868034929,
+        "entropy_difference": 0.03471973878567902
+      },
+      "threshold": {
+        "entropy_difference_min": 0.0
+      },
+      "passed": true,
+      "suite_name": "Layer 1: Semantic Sensorium",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L1-03",
+      "name": "Proxy Classification",
+      "type": "nominal",
+      "metrics": {
+        "z_precision": 1.0,
+        "z_recall": 1.0,
+        "w_recall": 1.0
+      },
+      "threshold": {
+        "precision_min": 0.8,
+        "recall_min": 0.75
+      },
+      "passed": true,
+      "suite_name": "Layer 1: Semantic Sensorium",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L1-04",
+      "name": "Noisy/Informal Text",
+      "type": "robust",
+      "metrics": {
+        "precision": 0.8571428571428571,
+        "recall": 0.8571428571428571,
+        "f1": 0.8571428571428571
+      },
+      "threshold": {
+        "f1_min": 0.65
+      },
+      "passed": true,
+      "suite_name": "Layer 1: Semantic Sensorium",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L1-05",
+      "name": "Out-of-Vocabulary Concepts",
+      "type": "robust",
+      "metrics": {
+        "known_concepts": 4.0,
+        "unknown_concepts": 0.0,
+        "entropy_known": 0.8979457248537798,
+        "entropy_unknown": -1.000088900581841e-12
+      },
+      "threshold": {
+        "fewer_extractions_for_oov": true
+      },
+      "passed": true,
+      "suite_name": "Layer 1: Semantic Sensorium",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L1-06",
+      "name": "Ambiguous Proxy Boundaries",
+      "type": "robust",
+      "metrics": {
+        "all_processed": true,
+        "valid_proxy_types": true,
+        "any_concepts_found": true,
+        "proxy_trace": [
+          {
+            "text": "Feeling a bit tense, maybe from the coffee",
+            "z_proxy": true,
+            "w_proxy": 0.0,
+            "concepts": [
+              "stress",
+              "mood_positive"
+            ],
+            "entropy": -1.000088900581841e-12
+          },
+          {
+            "text": "Didn't sleep great, busy day ahead",
+            "z_proxy": false,
+            "w_proxy": 1.0,
+            "concepts": [
+              "fatigue",
+              "sleep_quality",
+              "mood_positive"
+            ],
+            "entropy": -1.000088900581841e-12
+          },
+          {
+            "text": "Tired from the workout yesterday",
+            "z_proxy": true,
+            "w_proxy": 0.5,
+            "concepts": [
+              "stress",
+              "fatigue",
+              "exercise",
+              "work_stressor"
+            ],
+            "entropy": 0.5004024235361879
+          }
+        ]
+      },
+      "threshold": {
+        "processes_without_crash": true,
+        "concepts_extracted": true
+      },
+      "passed": true,
+      "suite_name": "Layer 1: Semantic Sensorium",
+      "duration_seconds": null
+    }
+  ],
+  "Layer 2: Digital Twin": [
+    {
+      "test_id": "R-L2-01",
+      "name": "State Estimation Quality",
+      "type": "nominal",
+      "metrics": {
+        "estimate_rmse": 9.876113468265409,
+        "raw_rmse": 8.089330745893163,
+        "improvement_ratio": 1.2208814027389558
+      },
+      "threshold": {
+        "ratio_max": 1.3
+      },
+      "passed": true,
+      "suite_name": "Layer 2: Digital Twin",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L2-02",
+      "name": "Constraint Satisfaction",
+      "type": "nominal",
+      "metrics": {
+        "violations": 0.0,
+        "total": 500.0,
+        "violation_rate": 0.0
+      },
+      "threshold": {
+        "violation_rate": 0.02
+      },
+      "passed": true,
+      "suite_name": "Layer 2: Digital Twin",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L2-03",
+      "name": "UKF Q Adaptation Direction",
+      "type": "nominal",
+      "metrics": {
+        "q_base": 25.0,
+        "q_stable": 0.0001261795515243247,
+        "q_after_mismatch": 249.999999996691,
+        "q_increased": 1.0,
+        "q_diag_full": [
+          249.999999996691,
+          0.0005687327489880722,
+          2.0859597229237616
+        ],
+        "adaptation_steps": 91.0,
+        "innovation_count": 100.0,
+        "multi_step_adaptation": true
+      },
+      "threshold": {
+        "Q_increases_on_mismatch": true,
+        "multi_step_adaptation": true
+      },
+      "passed": true,
+      "suite_name": "Layer 2: Digital Twin",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L2-04",
+      "name": "Model Mismatch (Hovorka vs Bergman)",
+      "type": "robust",
+      "metrics": {
+        "mismatch_rmse": 209.537531533732
+      },
+      "threshold": {
+        "rmse_max": 200.0
+      },
+      "passed": false,
+      "suite_name": "Layer 2: Digital Twin",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L2-05",
+      "name": "Unannounced Meal Detection (Innovation)",
+      "type": "robust",
+      "metrics": {
+        "baseline_innovation": 20.84973426717236,
+        "post_meal_innovation": 36.83647540568553,
+        "innovation_ratio": 1.7667599468490154,
+        "detected": 1.0
+      },
+      "threshold": {
+        "innovation_ratio_min": 1.5
+      },
+      "passed": true,
+      "suite_name": "Layer 2: Digital Twin",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L2-06",
+      "name": "Sensor Noise Filtering",
+      "type": "robust",
+      "metrics": {
+        "filtered_rmse": 19.671043606841668,
+        "raw_noisy_rmse": 21.998409332225222,
+        "filter_helps": 1.0
+      },
+      "threshold": {
+        "filtered_better_than_raw": true
+      },
+      "passed": true,
+      "suite_name": "Layer 2: Digital Twin",
+      "duration_seconds": null
+    }
+  ],
+  "Layer 3: Causal Inference": [
+    {
+      "test_id": "R-L3-01",
+      "name": "Harmonic Effect Recovery",
+      "type": "nominal",
+      "metrics": {
+        "psi0_mean": 0.5435397947426259,
+        "psi0_rmse": 0.04893232319469312,
+        "harmonic_rmse": 0.05174040792978858
+      },
+      "threshold": {
+        "psi0_rmse_max": 0.1
+      },
+      "passed": true,
+      "suite_name": "Layer 3: Causal Inference",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L3-02",
+      "name": "Double Robustness (AIPW)",
+      "type": "nominal",
+      "metrics": {
+        "both_correct": {
+          "mean": 0.502034376071116,
+          "bias": 0.0020343760711160064
+        },
+        "outcome_only": {
+          "mean": 0.5016770190813343,
+          "bias": 0.00167701908133433
+        },
+        "propensity_only": {
+          "mean": 0.5041969076735019,
+          "bias": 0.004196907673501893
+        },
+        "both_wrong": {
+          "mean": 0.7066883533247684,
+          "bias": 0.20668835332476843
+        }
+      },
+      "threshold": {
+        "both_correct_max": 0.05,
+        "one_correct_max": 0.1
+      },
+      "passed": true,
+      "suite_name": "Layer 3: Causal Inference",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L3-03",
+      "name": "Proximal Bias Reduction",
+      "type": "nominal",
+      "metrics": {
+        "mean_bias_reduction": 0.01606069902416701,
+        "pct_positive": 0.78
+      },
+      "threshold": {
+        "reduction_min": 0.3
+      },
+      "passed": true,
+      "suite_name": "Layer 3: Causal Inference",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L3-04",
+      "name": "Anytime Validity (Confidence Sequences)",
+      "type": "nominal",
+      "metrics": {
+        "coverage_rate": 1.0
+      },
+      "threshold": {
+        "coverage_min": 0.93
+      },
+      "passed": true,
+      "suite_name": "Layer 3: Causal Inference",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L3-05",
+      "name": "Non-Linear Confounding",
+      "type": "robust",
+      "metrics": {
+        "mean_bias": 0.03460932109845034
+      },
+      "threshold": {
+        "bias_max": 0.2
+      },
+      "passed": true,
+      "suite_name": "Layer 3: Causal Inference",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L3-06",
+      "name": "Proxy Violation Detection",
+      "type": "robust",
+      "metrics": {
+        "detection_rate": 0.8333333333333334
+      },
+      "threshold": {
+        "detection_min": 0.7
+      },
+      "passed": true,
+      "suite_name": "Layer 3: Causal Inference",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L3-07",
+      "name": "Time-Varying Confounding",
+      "type": "robust",
+      "metrics": {
+        "mean_bias": 0.04210787145979436
+      },
+      "threshold": {
+        "bias_max": 0.15
+      },
+      "passed": true,
+      "suite_name": "Layer 3: Causal Inference",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L3-08",
+      "name": "Small Sample (T=200)",
+      "type": "robust",
+      "metrics": {
+        "rmse": 0.09474995163304265
+      },
+      "threshold": {
+        "rmse_max": 0.25
+      },
+      "passed": true,
+      "suite_name": "Layer 3: Causal Inference",
+      "duration_seconds": null
+    }
+  ],
+  "Layer 4: Decision Engine": [
+    {
+      "test_id": "R-L4-01",
+      "name": "ACB Variance Reduction",
+      "type": "nominal",
+      "metrics": {
+        "mean_variance_ratio": 0.010284418966956302
+      },
+      "threshold": {
+        "ratio_max": 1.0
+      },
+      "passed": true,
+      "suite_name": "Layer 4: Decision Engine",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L4-02",
+      "name": "Regret Scaling",
+      "type": "nominal",
+      "metrics": {
+        "log_log_slope": 0.3489554794942722,
+        "final_regret": 187.80000000000018
+      },
+      "threshold": {
+        "slope_min": 0.3,
+        "slope_max": 0.7
+      },
+      "passed": true,
+      "suite_name": "Layer 4: Decision Engine",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L4-03",
+      "name": "Posterior Collapse Prevention (CTS)",
+      "type": "nominal",
+      "metrics": {
+        "initial_var": 1.0,
+        "final_var": 0.032258064516128976,
+        "var_ratio": 0.032258064516128976
+      },
+      "threshold": {
+        "ratio_max": 1.0
+      },
+      "passed": true,
+      "suite_name": "Layer 4: Decision Engine",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L4-04",
+      "name": "Biased Digital Twin",
+      "type": "robust",
+      "metrics": {
+        "estimated_mean": 0.0,
+        "true_mean": 0.6,
+        "mean_error": 0.6,
+        "post_var": 0.01639344262295087
+      },
+      "threshold": {
+        "error_bounded_by_2x_true_mean": true
+      },
+      "passed": true,
+      "suite_name": "Layer 4: Decision Engine",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L4-05",
+      "name": "Non-Stationary Rewards",
+      "type": "robust",
+      "metrics": {
+        "best_arm_rate_late": 0.404
+      },
+      "threshold": {
+        "min_rate": 0.25
+      },
+      "passed": true,
+      "suite_name": "Layer 4: Decision Engine",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L4-06",
+      "name": "High Blocking Rate (>50%)",
+      "type": "robust",
+      "metrics": {
+        "blocking_rate": 0.613,
+        "posteriors_narrowed": true
+      },
+      "threshold": {
+        "still_functional": true
+      },
+      "passed": true,
+      "suite_name": "Layer 4: Decision Engine",
+      "duration_seconds": null
+    }
+  ],
+  "Layer 5: Safety Supervisor": [
+    {
+      "test_id": "R-L5-01",
+      "name": "Tier Priority Classification",
+      "type": "nominal",
+      "metrics": {
+        "accuracy": 1.0,
+        "correct": 6.0,
+        "total": 6.0
+      },
+      "threshold": {
+        "accuracy": 1.0
+      },
+      "passed": true,
+      "suite_name": "Layer 5: Safety Supervisor",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L5-02",
+      "name": "Reflex Response Time",
+      "type": "nominal",
+      "metrics": {
+        "mean_ms": 0.04258911105353036,
+        "p99_ms": 0.06821023944212357,
+        "max_ms": 0.8660419989610091
+      },
+      "threshold": {
+        "max_ms": 100.0
+      },
+      "passed": true,
+      "suite_name": "Layer 5: Safety Supervisor",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L5-03",
+      "name": "STL Specification Satisfaction",
+      "type": "nominal",
+      "metrics": {
+        "satisfaction_rate": 1.0
+      },
+      "threshold": {
+        "rate_min": 0.95
+      },
+      "passed": true,
+      "suite_name": "Layer 5: Safety Supervisor",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L5-04",
+      "name": "Cold Start Relaxation Schedule",
+      "type": "nominal",
+      "metrics": {
+        "alpha_day0": 0.01,
+        "alpha_day14": 0.03528482235314231,
+        "alpha_day30": 0.04495977419990753,
+        "alpha_day44": 0.0482736276295419,
+        "day1_correct": 1.0,
+        "day30_correct": 1.0,
+        "monotonic_trend": 1.0
+      },
+      "threshold": {
+        "day1_near_strict": 0.01,
+        "day30_near_standard": 0.05
+      },
+      "passed": true,
+      "suite_name": "Layer 5: Safety Supervisor",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L5-05",
+      "name": "Sensor Dropout Safety",
+      "type": "robust",
+      "metrics": {
+        "safety_maintained": true,
+        "recovery_after_dropout": true
+      },
+      "threshold": {
+        "safety": true
+      },
+      "passed": true,
+      "suite_name": "Layer 5: Safety Supervisor",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L5-06",
+      "name": "Cascading Layer Failures",
+      "type": "robust",
+      "metrics": {
+        "all_safe": true
+      },
+      "threshold": {
+        "safety": true
+      },
+      "passed": true,
+      "suite_name": "Layer 5: Safety Supervisor",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-L5-07",
+      "name": "Rapid Glucose Transition",
+      "type": "robust",
+      "metrics": {
+        "all_safe": true
+      },
+      "threshold": {
+        "safety": true
+      },
+      "passed": true,
+      "suite_name": "Layer 5: Safety Supervisor",
+      "duration_seconds": null
+    }
+  ],
+  "Integration Tests": [
+    {
+      "test_id": "R-INT-01",
+      "name": "7-Day Pipeline Execution",
+      "type": "nominal",
+      "metrics": {
+        "steps_executed": 2016.0,
+        "steps_expected": 2016.0,
+        "completion_rate": 1.0,
+        "days_covered": 1.0,
+        "all_layers_active": true
+      },
+      "threshold": {
+        "completion": 1.0
+      },
+      "passed": true,
+      "suite_name": "Integration Tests",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-INT-02",
+      "name": "Clinical Metrics (TIR/TBR)",
+      "type": "nominal",
+      "metrics": {
+        "tir": 41.269841269841265,
+        "tbr": 0.7936507936507936,
+        "tbr_severe": 0.0,
+        "tar": 57.936507936507944,
+        "tar_severe": 35.714285714285715,
+        "mean": 224.00337529517196,
+        "std": 103.63596313808131,
+        "cv": 46.26535783289825
+      },
+      "threshold": {
+        "tir_min": 70.0,
+        "tbr_severe_max": 0.0
+      },
+      "passed": false,
+      "suite_name": "Integration Tests",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-INT-03",
+      "name": "Cross-Layer Communication",
+      "type": "nominal",
+      "metrics": {
+        "l2_predictions_complete": true,
+        "l5_blocks_correct": true,
+        "l5_total_checks": 2016.0,
+        "l5_tier_counts": {
+          "1": 0,
+          "2": 38,
+          "3": 11,
+          "4": 1967
+        }
+      },
+      "threshold": {
+        "data_integrity": true
+      },
+      "passed": true,
+      "suite_name": "Integration Tests",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-INT-04",
+      "name": "Multi-Patient Cohort (5 patients)",
+      "type": "robust",
+      "metrics": {
+        "all_safe": false,
+        "patient_summaries": [
+          {
+            "patient_id": 0,
+            "tir": 36.80555555555556,
+            "tbr_severe": 0.0
+          },
+          {
+            "patient_id": 1,
+            "tir": 44.21296296296296,
+            "tbr_severe": 9.837962962962964
+          },
+          {
+            "patient_id": 2,
+            "tir": 30.208333333333332,
+            "tbr_severe": 0.0
+          },
+          {
+            "patient_id": 3,
+            "tir": 35.06944444444444,
+            "tbr_severe": 8.217592592592593
+          },
+          {
+            "patient_id": 4,
+            "tir": 42.592592592592595,
+            "tbr_severe": 0.0
+          }
+        ]
+      },
+      "threshold": {
+        "all_safe": true
+      },
+      "passed": false,
+      "suite_name": "Integration Tests",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-INT-05",
+      "name": "Recovery from Safety Events",
+      "type": "robust",
+      "metrics": {
+        "emergency_triggered": true,
+        "recovered": true,
+        "post_recovery_tiers": [
+          "OK",
+          "OK",
+          "OK",
+          "OK",
+          "OK",
+          "OK",
+          "OK",
+          "OK",
+          "OK",
+          "OK"
+        ]
+      },
+      "threshold": {
+        "recovery": true
+      },
+      "passed": true,
+      "suite_name": "Integration Tests",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-INT-06",
+      "name": "Ablation \u2014 Each Layer Matters",
+      "type": "robust",
+      "metrics": {
+        "L1_concepts_extracted": true,
+        "L2_predictions_complete": true,
+        "L4_unique_actions": 10.0,
+        "L5_total_checks": 576.0
+      },
+      "threshold": {
+        "all_layers_active": true
+      },
+      "passed": true,
+      "suite_name": "Integration Tests",
+      "duration_seconds": null
+    }
+  ],
+  "Adversarial Tests": [
+    {
+      "test_id": "R-ADV-01",
+      "name": "Worst-Case Meal Timing",
+      "type": "adversarial",
+      "metrics": {
+        "severe_hypo_readings": 5.0,
+        "l5_safety_interventions": 5.0,
+        "total_steps": 576.0
+      },
+      "threshold": {
+        "safety_blocks_exist": true
+      },
+      "passed": true,
+      "suite_name": "Adversarial Tests",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-ADV-02",
+      "name": "Sensor Bias Attack (+50 mg/dL)",
+      "type": "adversarial",
+      "metrics": {
+        "safety_violations": 0.0,
+        "dose_exceeded_cap": 0.0,
+        "total_steps": 288.0,
+        "mean_final_action": 0.026909722222222224,
+        "max_final_action": 1.25
+      },
+      "threshold": {
+        "tbr_severe_max": 0.0
+      },
+      "passed": true,
+      "suite_name": "Adversarial Tests",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-ADV-03",
+      "name": "Rapid-Fire State Swings",
+      "type": "adversarial",
+      "metrics": {
+        "safety_maintained": true
+      },
+      "threshold": {
+        "no_violations": true
+      },
+      "passed": true,
+      "suite_name": "Adversarial Tests",
+      "duration_seconds": null
+    },
+    {
+      "test_id": "R-ADV-04",
+      "name": "Maximum Stress Scenario",
+      "type": "adversarial",
+      "metrics": {
+        "safety_maintained": true
+      },
+      "threshold": {
+        "no_violations": true
+      },
+      "passed": true,
+      "suite_name": "Adversarial Tests",
+      "duration_seconds": null
+    }
+  ]
+}
